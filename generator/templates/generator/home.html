@@ -1,0 +1,37 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+<style>
+    input {
+    margin: 6px;
+    }
+    form, h2 {
+    margin: 10px;
+    }
+</style>
+
+<h2>Генератор графов</h2>
+
+<form action="{% url 'graph' %}">
+    Тип графа: <input type="radio" name="graph_type" value="0" checked="checked">Неориентированный  <input type="radio" name="graph_type" value="1"> Ориентированный
+<br>
+    Порядок графа: <input type="number" name="vertices" value="6" min="4" max="10" required="required">
+<br>
+    Тип задачи: <input type="radio" name="task_type" value="0" checked="checked"> Из х<sub>1</sub> в x<sub>n</sub>  <input type="radio" name="task_type" value="1"> Из х<sub>1</sub> во все
+<br>
+    Число рёбер: от <input type="number" name="min_edges" min="4" max="18" value="10" required="required">  до <input type="number" name="max_edges" min="5" max="25" value="15" required="required">
+<br>
+    Вес ребра: от <input type="number" name="min_weight" min="2" max="20" value="2" required="required">  до <input type="number" name="max_weight" min="4" max="30" value="12">
+<br>
+    Количество дуг в кратчайшем пути: <input type="number" name="edges_in_answer" min="2" max="15" value="3" required="required">
+<br>
+    Количество кратчайших путей: <input type="number" name="num_of_answers" min="1" max="3" value="1" required="required">
+<br>
+    Количество генерируемых графов: <input type="number" name="num_of_graphs" min="1" max="5" value="1" required="required">
+<br>
+    <input type="submit" value="Генерировать!" class="btn btn-primary">
+</form>
+
+<div>
+{% for message in messages %}
+<h2>{{ message }}</h2>
+{% endfor %}
+</div>
